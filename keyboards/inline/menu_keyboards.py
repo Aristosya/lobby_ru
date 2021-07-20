@@ -66,7 +66,7 @@ async def subcategories_keyboard(category):
     # пользователя на уровень назад - на уровень 0.
     markup.row(
         InlineKeyboardButton(
-            text="Back",
+            text="Назад",
             callback_data=make_callback_data(level=CURRENT_LEVEL - 1))
     )
     return markup
@@ -95,7 +95,7 @@ async def items_keyboard(category, subcategory):
     # пользователя на уровень назад - на уровень 1 - на выбор подкатегории
     markup.row(
         InlineKeyboardButton(
-            text="Back",
+            text="Назад",
             callback_data=make_callback_data(level=CURRENT_LEVEL - 1,
                                              category=category))
     )

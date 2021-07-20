@@ -181,7 +181,7 @@ async def sure_19(call: CallbackQuery, sureid):
 async def leavefromthelobby(call: CallbackQuery, sureid):
     await Users.update.values(online_lobby=None, online_mmr=None, online_game=None, online_h=None, online_m=None).where(
         Users.users_id_telegram == str(call.from_user.id)).gino.status()
-    await call.message.answer('ВЫ успешно вышли с лобби. /menu')
+    await call.message.answer('Вы успешно вышли с лобби. /menu')
     return
 
 

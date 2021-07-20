@@ -43,7 +43,7 @@ async def show_menu(message: types.Message):
         # Выполним функцию, которая отправит пользователю кнопки с доступными категориями
         await list_categories(message)
     else:
-        await message.answer("You must be registered to perform this function, /reg - to start registration.")
+        await message.answer("Вы обязаны быть зарегистрированным пользователем. /reg для начала регистрации !")
         return
 
 
@@ -56,12 +56,12 @@ async def list_categories(message: Union[CallbackQuery, Message], **kwargs):
 
     # Проверяем, что за тип апдейта. Если Message - отправляем новое сообщение
     if isinstance(message, Message):
-        await message.answer("What do you want to choose ?", reply_markup=markup)
+        await message.answer("Что Вы хотите выбрать ?", reply_markup=markup)
 
     # Если CallbackQuery - изменяем это сообщение
     elif isinstance(message, CallbackQuery):
         call = message
-        text = f'What do you want to choose ?'
+        text = f'Что Вы хотите выбрать ?'
         await call.message.edit_text(text=text, reply_markup=markup)
 
 
@@ -70,7 +70,7 @@ async def list_subcategories(callback: CallbackQuery, category, **kwargs):
     markup = await subcategories_keyboard(category)
 
     # Изменяем сообщение, и отправляем новые кнопки с подкатегориями
-    text = f'Choose your action'
+    text = f'Выберите действие'
     await callback.message.edit_text(text=text, reply_markup=markup)
 
 
@@ -79,7 +79,7 @@ async def list_items(callback: CallbackQuery, category, subcategory, **kwargs):
     markup = await items_keyboard(category, subcategory)
 
     # Изменяем сообщение, и отправляем новые кнопки с подкатегориями
-    text = f'Choose your action'
+    text = f'Выберите действие'
     await callback.message.edit_text(text=text, reply_markup=markup)
 
 
