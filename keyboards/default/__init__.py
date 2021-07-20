@@ -1,0 +1,1 @@
+from .keybord_for_registr import yesnomenu
