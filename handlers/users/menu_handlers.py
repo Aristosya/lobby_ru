@@ -199,20 +199,20 @@ async def sure(call: CallbackQuery, callback_data: dict):
         await call.answer(cache_time=60)
         await sure_33(call, sureid)
         return
-    elif sureid == 34:  # Donate 1$
+    elif sureid == 34:  # Donate 100Р.
         await call.message.delete()
         await call.answer(cache_time=60)
-        await sure_34(call, sureid, 7320, None)
+        await sure_34(call, sureid, 100, None)
         return
-    elif sureid == 35:  # Donate 5$
+    elif sureid == 35:  # Donate 500Р.
         await call.message.delete()
         await call.answer(cache_time=60)
-        await sure_34(call, sureid, 7320 * 5, None)
+        await sure_34(call, sureid, 500, None)
         return
-    elif sureid == 36:  # Donate 10$
+    elif sureid == 36:  # Donate 1000р.
         await call.message.delete()
         await call.answer(cache_time=60)
-        await sure_34(call, sureid, 7320 * 10, None)
+        await sure_34(call, sureid, 1000, None)
         return
     elif sureid == 37:  # Donate ? $
         await call.message.delete()

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bdb9856b-cc50-43f8-a1fe-9fe43a9f06d7" name="Default Changelist" comment="Поменял .second (проблема с оригинала !)" />
+    <list default="true" id="bdb9856b-cc50-43f8-a1fe-9fe43a9f06d7" name="Default Changelist" comment="Перевел кнопки и меню хендлер.">
+      <change beforePath="$PROJECT_DIR$/handlers/users/menu_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/menu_handlers.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +42,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626803628040</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Перевел кнопки и меню хендлер.">
+      <created>1626809917761</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1626809917761</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -57,6 +66,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Поменял .second (проблема с оригинала !)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Поменял .second (проблема с оригинала !)" />
+    <MESSAGE value="Перевел кнопки и меню хендлер." />
+    <option name="LAST_COMMIT_MESSAGE" value="Перевел кнопки и меню хендлер." />
   </component>
 </project>
