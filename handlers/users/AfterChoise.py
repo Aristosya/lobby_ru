@@ -134,9 +134,23 @@ async def sure_34(call: CallbackQuery, sureid, ammount, state: FSMContext):
     need_email = False
     need_shipping_address = False
 
+    try:
+        await call.message.answer(f"Вы собираетесь безвозмездно пожертоввать \n"
+                             f"Суммой {ammount} в Рублях \n"
+                             f"""Нажимая на кнопку "Заплатить" вы соглащаетесь с условиями  <a href="https://docs.google.com/document/d/1YfztxZe6q6_ktydo6WsPLIMs_09oCMg3WAGepKYG27g/edit?usp=sharing%22%3Eофертыr</a>\n"""
+                             f"В случае возникновения проблем, свяжитесь с администрацией : donate.lobbygames@mail.ru \n"
+                             f"Поддержка Русского, Английского, Турецкого языков\n"
+                             f"Добровольное пожертвование на уставную деятельность",
+                             parse_mode="HTML")
+
+    except:
+        pass
+    ammount = ammount * 100
+
+
     await bot.send_invoice(chat_id=call.from_user.id,
-                           title=f"Донат {ammount/100} в Рублях",
-                           description=f"Донат денег суммой {ammount/100} в Рублях",
+                           title=f"Пожертвование {ammount/100} в Рублях",
+                           description=f"Пожертвование денег суммой {ammount/100} в Рублях",
                            payload=str(ammount),
                            start_parameter=str(ammount),
                            currency=currency,
@@ -304,7 +318,14 @@ async def newvaluepayment(message: types.Message, state: FSMContext):
         return
 
     await state.reset_state()
-    await sure_34(message, 37, ammount*100, None)
+    await message.answer(f"Вы собираетесь безвозмездно пожертоввать \n"
+                         f"Суммой {ammount} в Рублях \n"
+                         f"""Нажимая на кнопку "Заплатить" вы соглащаетесь с условиями  <a href="https://docs.google.com/document/d/1YfztxZe6q6_ktydo6WsPLIMs_09oCMg3WAGepKYG27g/edit?usp=sharing%22%3Eофертыr</a>\n"""
+                         f"В случае возникновения проблем, свяжитесь с администрацией : donate.lobbygames@mail.ru \n"
+                         f"Поддержка Русского, Английского, Турецкого языков\n"
+                         f"Добровольное пожертвование на уставную деятельность",
+                         parse_mode="HTML")
+    await sure_34(message, 37, ammount, None)
     await message.answer("Или /cancel его! - чтобы отменить.")
 
 
