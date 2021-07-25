@@ -137,7 +137,7 @@ async def sure_34(call: CallbackQuery, sureid, ammount, state: FSMContext):
     try:
         await call.message.answer(f"Вы собираетесь безвозмездно пожертоввать \n"
                              f"Суммой {ammount} в Рублях \n"
-                             f"""Нажимая на кнопку "Заплатить" вы соглащаетесь с условиями  <a href="https://docs.google.com/document/d/1YfztxZe6q6_ktydo6WsPLIMs_09oCMg3WAGepKYG27g/edit?usp=sharing%22%3Eофертыr</a>\n"""
+                             f"""Нажимая на кнопку "Заплатить" вы соглащаетесь с условиями  <a href="https://docs.google.com/document/d/1YfztxZe6q6_ktydo6WsPLIMs_09oCMg3WAGepKYG27g/edit?usp=sharing%22%3E">оферты</a>\n"""
                              f"В случае возникновения проблем, свяжитесь с администрацией : donate.lobbygames@mail.ru \n"
                              f"Поддержка Русского, Английского, Турецкого языков\n"
                              f"Добровольное пожертвование на уставную деятельность",
@@ -320,7 +320,7 @@ async def newvaluepayment(message: types.Message, state: FSMContext):
     await state.reset_state()
     await message.answer(f"Вы собираетесь безвозмездно пожертоввать \n"
                          f"Суммой {ammount} в Рублях \n"
-                         f"""Нажимая на кнопку "Заплатить" вы соглащаетесь с условиями  <a href="https://docs.google.com/document/d/1YfztxZe6q6_ktydo6WsPLIMs_09oCMg3WAGepKYG27g/edit?usp=sharing%22%3Eофертыr</a>\n"""
+                         f"""Нажимая на кнопку "Заплатить" вы соглащаетесь с условиями  <a href="https://docs.google.com/document/d/1YfztxZe6q6_ktydo6WsPLIMs_09oCMg3WAGepKYG27g/edit?usp=sharing%22%3E">оферты</a>\n"""
                          f"В случае возникновения проблем, свяжитесь с администрацией : donate.lobbygames@mail.ru \n"
                          f"Поддержка Русского, Английского, Турецкого языков\n"
                          f"Добровольное пожертвование на уставную деятельность",
