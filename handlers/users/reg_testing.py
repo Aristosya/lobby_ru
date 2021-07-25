@@ -31,11 +31,11 @@ from keyboards.default import yesnomenu
 @dp.message_handler(commands=["reg", "register","registration"], state=None)
 async def new_reg(message: types.Message):
     if await checkreg(message):
-        await message.answer("You are registered. Open the menu...")
+        await message.answer("Ты успешно зарегистроравн. Открываю меню...")
         await show_menu(message)
         return
-    await message.answer("You started the registration\n\n"
-                         "1) Write your nickname in the game\n\n\nOr /cancel - to cancel the registration")
+    await message.answer("И так, начнем регистрацию!\n\n"
+                         "1)Введи свой Ник в игре! \n\n\nили /cancel - для отмены регистрации!")
     # Задаем стейт Test.Nick
     await Test.Nick.set()
 
@@ -45,22 +45,22 @@ async def new_reg(message: types.Message):
         await show_menu(message)
         return
 
-    await message.answer("You are not registered !"
-                            "Write /reg to start a registration")
+    await message.answer("Ты не зарегистрирован !"
+                            "Напиши /reg - чтобы начать регистрацию!")
 
 
 
 @dp.message_handler(state = None)
 async def answersome(message: types.Message, state: FSMContext):
     await state.reset_state()
-    await message.answer("/start or /menu !")
+    await message.answer("/start - для заупска бота или /menu - для открытия меню !")
 
 
 
 @dp.message_handler(Command("cancel"), state="*")
 async def cancel_reg(message: types.Message, state: FSMContext):
     await state.finish()
-    await message.answer("You canceled registration")
+    await message.answer("Ты успешно отменил регистрацию!")
 
 
 # Сюда попадает все что человек написал, но только в стейте Test.Nick
@@ -68,19 +68,19 @@ async def cancel_reg(message: types.Message, state: FSMContext):
 async def answer_nick(message: types.Message, state: FSMContext):
     answer = message.text
     if len(answer) > 32:
-        await message.answer("Maximum 32 characters allowed. Try again!")
+        await message.answer("Я разрешил только 32 символа! Попробуй снова!")
         return
     else:
         if await checkusername(message):
             # Записываем текст в data answer_nick
             await state.update_data(answer_nick=answer)
             # Задаем вторую строку регистрации
-            await message.answer("Ok!\n\n Now write your Name \n\n\nOr /cancel - to cancel the registration")
+            await message.answer("Ладно! \n\n Теперь введи своё Имя! \n\n\nили /cancel - для отмены регистрации")
 
             await Test.Name.set()
             return
         else:
-            await message.answer("This Nick Name already exists ! Try again !")
+            await message.answer("Ой ой ой, такой ник уже существует! Попробуй снова!")
             return
 
 
@@ -88,12 +88,12 @@ async def answer_nick(message: types.Message, state: FSMContext):
 async def answer_name(message: types.Message, state: FSMContext):
     answer = message.text
     if len(answer) > 11:
-        await message.answer("Maximum 11 characters allowed. Try again!")
+        await message.answer("Я разрешил только 11 символов! Попробуй снова!!")
         return
     else:
         await state.update_data(answer_name=answer)
         await message.answer(
-            f"Nice to meet you {answer}!\n\n At the end write your Discord like this :    ExamPle#1902\n\n\nOr /cancel - to cancel the registration ")
+            f"Очень рад познакомиться с тобой {answer}!\n\n Ну и напоследок введи свой Дискорд :    NickName#1902\n\n\nили /cancel - для отмены регисрации!")
         await Test.Discord.set()
 
 
@@ -101,7 +101,7 @@ async def answer_name(message: types.Message, state: FSMContext):
 async def answer_discord(message: types.Message, state: FSMContext):
     answer = message.text
     if len(answer) > 32:
-        await message.answer("Maximum 32 characters allowed. Try again!")
+        await message.answer("Я разрешил только 32 символа! Попробуй снова!")
         return
     else:
         await state.update_data(answer_discord=answer)
@@ -110,11 +110,11 @@ async def answer_discord(message: types.Message, state: FSMContext):
         NickName = data.get("answer_nick")
         NameOfUser = data.get("answer_name")
         DiscordOfUser = data.get("answer_discord")
-        await message.answer(f'''Let's to check it !\n\n\n'''
-                             f'''Yor name is: {NameOfUser}\n'''
-                             f'''Your nick name is: {NickName}\n'''
-                             f'''Your Discord is: {DiscordOfUser}\n\n\n'''
-                             f'''Is it true ?''', reply_markup=yesnomenu)
+        await message.answer(f'''Ну и давай взглянем на твои данные!\n\n\n'''
+                             f'''Тебя зовут: {NameOfUser}\n'''
+                             f'''Твой Ник: {NickName}\n'''
+                             f'''Твой Дискорд: {DiscordOfUser}\n\n\n'''
+                             f'''Всё верно?''', reply_markup=yesnomenu)
         await Test.Final.set()
 
 
@@ -136,7 +136,7 @@ async def answer_final(message: types.Message, state: FSMContext):
                    )
 
     await state.reset_state(with_data=False)
-    await message.answer(f"""Thank you for the registration, {NameOfUser}  /menu""")
+    await message.answer(f"""Спасибо за регистрацию, {NameOfUser}, ну а теперь окунемся в мир для поиска тиммейтов\n /menu - для открытию меню""")
 
 
 @dp.message_handler(text='No', state=Test.Final)
